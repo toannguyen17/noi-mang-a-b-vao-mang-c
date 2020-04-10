@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bài 9- Viết chương trình khởi tạo/nhập vào 2 mảng số nguyên gồm 10 phần tử, gọi là mảng a và b. Mảng c là một mảng được khai báo gồm 20 phần tử số nguyên. Chương trình sẽ lưu các phần tử được nối từ hai mảng b và a vào mảng c. Hiển thị mảng c.</title>
+</head>
+<body>
+	<p>Bài 9- Viết chương trình khởi tạo/nhập vào 2 mảng số nguyên gồm 10 phần tử, gọi là mảng a và b. Mảng c là một mảng được khai báo gồm 20 phần tử số nguyên. Chương trình sẽ lưu các phần tử được nối từ hai mảng b và a vào mảng c. Hiển thị mảng c.</p>
+	<p>Mảng A:
+		<p id="contentArrA"></p>
+	</p>
+	<p>Mảng B:
+		<p id="contentArrB"></p>
+	</p>
+	<p>Mảng C:
+		<p id="contentArrC"></p>
+	</p>
+	<button onclick="createArr()">Khởi tạo mảng</button>
+	<button onclick="catAbToC()">Nối mảng A, B vào mảng C</button>
+
+	<script type="text/javascript">
+		let elContentArrA = document.querySelector('#contentArrA');
+		let elContentArrB = document.querySelector('#contentArrB');
+		let elContentArrC = document.querySelector('#contentArrC');
+
+		let arrA;
+		let arrB;
+		let arrC;
+
+		let isCat = false;
+
+		function updateContent(){
+			elContentArrA.innerText = JSON.stringify(arrA);
+			elContentArrB.innerText = JSON.stringify(arrB);
+			elContentArrC.innerText = JSON.stringify(arrC);
+		}
+		function createArr() {
+			arrA = [];
+			arrB = [];
+			arrC = [];
+			for (let i = 0; i < 10; i++) {
+				arrA[i] = ((Math.random()*20)+1)>>0;
+			}
+
+			for (let i = 0; i < 10; i++) {
+				arrB[i] = ((Math.random()*50)+1)>>0;
+			}
+
+			for (let i = 0; i < 20; i++) {
+				arrC[i] = ((Math.random()*99)+1)>>0;
+			}
+			updateContent();
+			isCat = false;
+		}
+		function catAbToC() {
+			if (isCat === false) {
+				isCat = true;
+				for (let i = 0; i < arrA.length; i++) {
+					arrC[arrC.length] = arrA[i];
+				}
+				for (let i = 0; i < arrB.length; i++) {
+					arrC[arrC.length] = arrB[i];
+				}
+				updateContent();
+			}
+		}
+	</script>
+</body>
+</html>
